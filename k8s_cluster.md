@@ -3,6 +3,55 @@ Follow this documentation to set up a Kubernetes cluster on __Ubuntu__.
 
 This documentation guides you in setting up a cluster with one master node and one worker node.
 
+
+## Update the apt package index and install packages to allow apt to use a repository over HTTPS:
+```
+sudo apt-get update
+sudo apt-get install \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
+
+```
+## Add Docker’s official GPG key:
+```
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+
+```
+## Use the following command to set up the repository:
+```
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+```
+
+## Install Docker Engine
+```
+sudo apt-get install docker-ce=5:19.03.12~3-0~ubuntu-bionic -y
+sudo apt-mark hold docker-ce
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ```
 ##### Host file update
 cat <<EOF>> /etc/hosts
