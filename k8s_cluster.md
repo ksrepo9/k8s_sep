@@ -100,6 +100,9 @@ kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl versio
 
 ```
 
+swapoff -a
+
+
 #### Verify nodes status  - { Master Node Config }
 ```
 kubectl get nodes
