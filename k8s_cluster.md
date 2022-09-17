@@ -31,6 +31,7 @@ echo \
 
 #### Install Docker Engine
 ```
+sudo apt-get update
 sudo apt-get install docker-ce=5:19.03.12~3-0~ubuntu-bionic -y
 sudo apt-mark hold docker-ce
 
