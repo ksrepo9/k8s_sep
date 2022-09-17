@@ -36,7 +36,7 @@ sudo apt-mark hold docker-ce
 
 ```
 
-## { Master - Worker } install kubeadm, kubelet, and kubectl  2 Nodes.
+## { Master - Worker } install kubeadm, kubelet, and kubectl on 2 Nodes.
 
 #### Update the apt package index and install packages needed to use the Kubernetes apt repository:
 ```
@@ -76,6 +76,10 @@ sudo apt-mark hold kubelet kubeadm kubectl
 
 
 
+
+
+
+## Install Docker On both Kmaster and Kworker
 
 
 
