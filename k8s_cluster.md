@@ -88,5 +88,5 @@ kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl versio
 ```
 kubectl get nodes
 ```
-
+###
 
