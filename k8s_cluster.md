@@ -73,33 +73,33 @@ systemctl daemon-reload
 
 ```
 
-#### Kubernetes Master Node Configuration
+#### Kubernetes Master Node Configuration - { Master Node Config }
 
 ```
 sudo kubeadm init
 
 ```
 
-#### kubeconfig update
+#### kubeconfig update - { Master Node Config }
 ```
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 ```
-#### Worker Node Join Token
+#### Worker Node Join Token - { Master Node Config }
 ```
 sudo kubeadm token create --print-join-command
 
 ```
 
-#### K8S Cluster CNI Configuration:
+#### K8S Cluster CNI Configuration: - { Master Node Config }
 ```
 kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
 
 ```
 
-#### Verify nodes status
+#### Verify nodes status  - { Master Node Config }
 ```
 kubectl get nodes
 
