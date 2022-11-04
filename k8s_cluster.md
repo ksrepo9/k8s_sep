@@ -96,7 +96,7 @@ sudo kubeadm token create --print-join-command
 
 #### K8S Cluster CNI Configuration: - { Master Node Config }
 ```
-kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
+kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
 
 ```
 
