@@ -74,6 +74,15 @@ systemctl daemon-reload
 
 ```
 
+#### Troubleshooting steps
+
+```
+cd /etc/containerd
+rm -rf *;
+systemctl restart containerd
+
+```
+
 #### Kubernetes Master Node Configuration - { Master Node Config }
 
 ```
