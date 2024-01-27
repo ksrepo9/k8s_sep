@@ -110,6 +110,7 @@ kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/we
 ```
 
 swapoff -a
+kubeadm reset --force
 
 
 #### Verify nodes status  - { Master Node Config }
