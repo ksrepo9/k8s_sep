@@ -49,7 +49,7 @@ chmod 777 /var/ks/
 ```
 vi /etc/exports
 
-/var/ks/     10.1.1.0/20(rw,sync,no_root_squash,no_all_squash)
+/var/ks/     *(rw,sync,no_root_squash,no_all_squash)
 
 ```
 
