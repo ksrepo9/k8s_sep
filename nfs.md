@@ -94,3 +94,11 @@ systemctl start nfs-idmap
 
 mount -t nfs nfs_serverip:/var/ks/ /var/data/ 
 ```
+
+#### Clinet Installation in Ubuntu
+```
+
+sudo apt install nfs-common
+sudo apt install cifs-utils
+```
+
