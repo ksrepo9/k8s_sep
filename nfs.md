@@ -101,4 +101,10 @@ mount -t nfs nfs_serverip:/var/ks/ /var/data/
 sudo apt install nfs-common
 sudo apt install cifs-utils
 ```
+## Client Side Configuration - Ubuntu
 
+##  Install NFS Sever on clinet .
+```
+sudo apt update
+sudo apt install nfs-common
+```
