@@ -5,7 +5,7 @@ This documentation guides you in setting up a NFS Server with one centos server.
 
 ##  Install NFS Sever.
 ```
-yum install nfs-utils nfs-utils-lib
+sudo dnf install nfs-utils
 ```
 
 #### Enable NFS service using below cmd
