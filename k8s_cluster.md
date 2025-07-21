@@ -127,17 +127,6 @@ kubectl get nodes
 ```
 
 
-Here's a concise `git.md` documenting the etcd backup/clear procedure:
-
-```markdown
-# ETCD Data Management
-
-## Backup and Clear `/var/lib/etcd` (For New Clusters)
-
-Use this procedure when initializing a new Kubernetes cluster or when existing etcd data is no longer needed.
-
-### Steps:
-
 1. **Backup existing data**:
    ```bash
    sudo mv /var/lib/etcd /var/lib/etcd.backup
@@ -157,12 +146,3 @@ Use this procedure when initializing a new Kubernetes cluster or when existing e
    ```bash
    sudo kubeadm init --ignore-preflight-errors=DirAvailable--var-lib-etcd
    ```
-
-### Notes:
-- This will permanently delete previous etcd data
-- For production clusters with existing data, consider etcd snapshot restoration instead
-- Always verify backups before deletion
-
-> Warning: Only use this for new clusters or when you intentionally want to wipe etcd data.
-```
-
