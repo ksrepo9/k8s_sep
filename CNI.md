@@ -24,8 +24,6 @@ kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
 ```
 
 
-
-```markdown
 # Flannel CNI Installation Guide
 
 ## Quick Installation
