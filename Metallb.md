@@ -1,4 +1,3 @@
-```markdown
 # MetalLB Load Balancer Installation Guide
 
 ## 1. Installation Methods
@@ -82,4 +81,3 @@ kubectl get svc nginx -w  # Watch for EXTERNAL-IP assignment
    ```bash
    kubectl describe pod -n metallb-system <pod-name>
    ```
-```
