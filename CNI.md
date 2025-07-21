@@ -104,5 +104,3 @@ cat /etc/kubernetes/manifests/kube-controller-manager.yaml | grep cluster-cidr
 - **Compatibility**:
   - Remove other CNI plugins before installation
   - Works best with default kubeadm configurations
-
-```
