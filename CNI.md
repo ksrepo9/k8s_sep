@@ -23,8 +23,9 @@ kubectl get nodes -o wide
 kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
 ```
 
+-------------------------------------------------------------------------------------
 
-# Flannel CNI Installation Guide
+## Flannel CNI Installation Guide
 
 ## Quick Installation
 ```bash
