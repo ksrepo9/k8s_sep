@@ -41,18 +41,18 @@ spec:
   http:
     - route:
         - destination:
-            host: my-app-stable
+            host: app-stable
             subset: stable
           weight: 90
         - destination:
-            host: my-app-canary
+            host: app-canary
             subset: canary
           weight: 10
 ```
 
 ### **How It Works**  
-- **Stable Deployment (`my-app-stable`)** receives **90% of traffic** (default).  
-- **Canary Deployment (`my-app-canary`)** receives **10% of traffic** (test phase).  
+- **Stable Deployment (`app-stable`)** receives **90% of traffic** (default).  
+- **Canary Deployment (`app-canary`)** receives **10% of traffic** (test phase).  
 
 ### **Next Steps**  
 - **If the canary performs well**, gradually shift traffic (e.g., 50/50 → 100% canary).  
