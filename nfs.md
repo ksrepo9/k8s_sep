@@ -1,110 +1,119 @@
-# NFS Configuration
-**Follow this documentation to set up a NFS on __Centos__**.
+# NFS Server Setup on Ubuntu
 
-This documentation guides you in setting up a NFS Server with one centos server.
+This guide provides step-by-step instructions to install and configure an NFS server on Ubuntu, allowing shared directories to be mounted on client machines.
 
-##  Install NFS Sever.
-```
-sudo dnf install nfs-utils
-```
+---
 
-#### Enable NFS service using below cmd
-```
-systemctl enable rpcbind
-systemctl enable nfs-server
-systemctl enable nfs-lock
-systemctl enable nfs-idmap
-```
-#### Starting NFS service using below cmd
-```
-systemctl start rpcbind
-systemctl start nfs-server
-systemctl start nfs-lock
-systemctl start nfs-idmap
+## Prerequisites
 
+- Ubuntu Server (20.04, 22.04, or later)
+- Root or sudo privileges
+- Basic knowledge of Linux command line
 
-```
-#### Allow firewall rule :
-```
-firewall-cmd --permanent --add-port=111/tcp
-firewall-cmd --permanent --add-port=54302/tcp
-firewall-cmd --permanent --add-port=20048/tcp
-firewall-cmd --permanent --add-port=2049/tcp
-firewall-cmd --permanent --add-port=46666/tcp
-firewall-cmd --permanent --add-port=42955/tcp
-firewall-cmd --permanent --add-port=875/tcp
+---
 
+## Step 1: Update the System
+
+```bash
+sudo apt update && sudo apt upgrade -y
 ```
 
-#### Create NFS root DIR 
-```
-mkdir /var/ks 
+---
 
-```
-#### Apply full Permissions to NFS root DIR :
-```
-chmod 777 /var/ks/
-```
-#### Export shared NFS directory :
-```
-vi /etc/exports
+## Step 2: Install NFS Kernel Server
 
-/var/ks/     *(rw,sync,no_root_squash,no_all_squash)
-
+```bash
+sudo apt install nfs-kernel-server -y
 ```
 
+---
 
-#### Restart NFS server service to referesh the configuration :
-```
-systemctl restart nfs-server
+## Step 3: Create Shared Directory
 
-```
+Create a directory to be shared over NFS:
 
-#### NFS Server Validation :
-
-```
-exportfs -rav
-
+```bash
+sudo mkdir -p /var/nfs/ks
 ```
 
-## Client Side Configuration 
+Set appropriate permissions:
 
-##  Install NFS Sever on clinet .
-```
-yum install nfs-utils nfs-utils-lib
-```
-
-#### Enable NFS service using below cmd
-```
-systemctl enable rpcbind
-systemctl enable nfs-server
-systemctl enable nfs-lock
-systemctl enable nfs-idmap
-```
-#### Starting NFS service using below cmd
-```
-systemctl start rpcbind
-systemctl start nfs-server
-systemctl start nfs-lock
-systemctl start nfs-idmap
-
-```
-#### Clinet Mount Path
+```bash
+sudo chown nobody:nogroup /var/nfs/ks
+sudo chmod 777 /var/nfs/ks
 ```
 
-mount -t nfs nfs_serverip:/var/ks/ /var/data/ 
+---
+
+## Step 4: Configure Exports
+
+Edit the `/etc/exports` file to specify shared directories and permissions:
+
+```bash
+sudo nano /etc/exports
 ```
 
-#### Clinet Installation in Ubuntu
+Add the following line (modify IP addresses as needed):
+
+```plaintext
+/var/nfs/ks 192.168.29.0/24(rw,sync,no_subtree_check)
 ```
 
-sudo apt install nfs-common
-sudo apt install cifs-utils
-```
-## Client Side Configuration - Ubuntu
+- Replace `192.168.29.0/24` with your client subnet or specific IPs.
+- Use `*` to allow all clients (less secure).
 
-##  Install NFS Sever on clinet .
+Save and close the file.
+
+---
+
+## Step 5: Export Shared Directory
+
+Apply the export configuration:
+
+```bash
+sudo exportfs -ra
 ```
-sudo apt update
-sudo apt install nfs-common
+
+Verify the export:
+
+```bash
+sudo exportfs -v
 ```
+
+---
+
+## Step 6: Restart NFS Service
+
+```bash
+sudo systemctl restart nfs-kernel-server
+```
+
+Ensure the service is active:
+
+```bash
+sudo systemctl status nfs-kernel-server
+```
+
+
+## Step 7: Mount NFS Share on Client
+
+On the client machine, install NFS utilities:
+
+```bash
+sudo apt install nfs-common -y
+```
+
+Create a mount point:
+
+```bash
+sudo mkdir -p /mnt/nfs/general
+```
+
+Mount the NFS share:
+
+```bash
+sudo mount Client_IP:/var/nfs/ks /mnt/nfs/ks
+```
+
+Replace `Client_IP` with your server's IP address.
+
