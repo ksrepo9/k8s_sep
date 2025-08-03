@@ -50,7 +50,7 @@ sudo chmod 777 /var/nfs/ks
 Edit the `/etc/exports` file to specify shared directories and permissions:
 
 ```bash
-sudo nano /etc/exports
+sudo vim /etc/exports
 ```
 
 Add the following line (modify IP addresses as needed):
