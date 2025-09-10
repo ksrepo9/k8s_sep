@@ -32,3 +32,12 @@ spec:
               name: svc1
               port:
                 number: 80
+
+-----
+NGINX Ingress Helm Repository
+
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+helm repo update
+
+helm install my-ingress-nginx ingress-nginx/ingress-nginx --version 4.0.13
+
