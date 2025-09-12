@@ -1,0 +1,19 @@
+Metrics Server to collect resource metrics:
+
+kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+
+-----
+
+Verify installation:
+
+kubectl get deployment metrics-server -n kube-system
+
+-----
+HPA Load Check
+ image: k8s.gcr.io/hpa-example
+
+------
+
+Load Testing
+
+kubectl run -i --tty load-generator --rm --image=busybox --restart=Never -- /bin/sh -c "while sleep 0.01; do wget -q -O- app-url; done"
